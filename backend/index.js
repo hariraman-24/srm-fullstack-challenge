@@ -48,8 +48,16 @@ app.post('/bfhl', (req, res) => {
 });
 
 /**
+ * @route GET /
+ * @desc Root health check
+ */
+app.get('/', (req, res) => {
+    res.status(200).send("BFHL API is running. use POST /bfhl to process data.");
+});
+
+/**
  * @route GET /bfhl
- * @desc Health check or test route (Optional but good practice)
+ * @desc Operation status for /bfhl
  */
 app.get('/bfhl', (req, res) => {
     res.status(200).json({ operation_code: 1 });

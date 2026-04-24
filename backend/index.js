@@ -49,10 +49,22 @@ app.post('/bfhl', (req, res) => {
 
 /**
  * @route GET /
- * @desc Root health check
+ * @desc API identity info
  */
 app.get('/', (req, res) => {
-    res.status(200).send("BFHL API is running. use POST /bfhl to process data.");
+    res.status(200).json({
+        operation: "SRM Full Stack Challenge API",
+        status: "Active",
+        author: {
+            user_id: ID_DETAILS.user_id,
+            email_id: ID_DETAILS.email_id,
+            roll_number: ID_DETAILS.college_roll_number
+        },
+        endpoints: {
+            process_data: "POST /bfhl",
+            health_check: "GET /bfhl"
+        }
+    });
 });
 
 /**
